@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
 
   #User cannot access signup/login pages if already logged in
   def require_logged_out
-    redirect_to user_url(current_user) if logged_in?
+    redirect_to bands_url if logged_in?
   end
 
 end

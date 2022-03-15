@@ -1,0 +1,26 @@
+<div class="main-content">
+  <h1 class="main-logo">Music App</h1>
+  <nav>
+    <a class="button" href="<%= users_url%>">Take me Home</a>
+    <div class="user-detail">
+      <form action="<%= session_url %>" method="post">
+        <input type="hidden" name="authenticity_token"value="<%= form_authenticity_token %>">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="Logout">
+      </form>
+    </div>
+  </nav>
+  <h2 class="page-header">New Band</h2>
+  <form class="form" action="<%= bands_url %>" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <p>
+      <label for="name">Band Name</label>
+      <input id="name" type="text" name="band[name]">
+    </p>
+    <input type="submit">
+    <br>
+    <% if flash[:errors] %>
+      <%= flash[:errors] %>
+    <% end %>
+  </form>
+</div>

@@ -110,6 +110,74 @@ html, body, div, span, h1, h2, h3, h4, a, p, ol, ul, li, form, label, article, a
     margin-bottom: 20px;
   }
 
+  li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+  }
+
   .form input[type="submit"] {
     align-self: flex-end;
   }
+
+  .main-content nav {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+  .main-content nav .user-detail {
+    display: flex;
+  }
+
+  .main-content nav .user-detail p {
+    color: white;
+    padding: 10px;
+  }
+
+  .main-list {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .main-list li {
+    width: calc(33% - 40px);
+    height: 100px;
+    margin: 0 20px 20px 0;
+    border-radius: 10px;
+    background-color: #FDDB61;
+  }
+
+  .main-list li a p {
+    width: 100%;
+    text-align: center;
+    font-size: 25px;
+    color: black;
+    display: block;
+    margin-block-start: 1.3em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  .sub-header {
+    font-size: 25px;
+    color: coral;
+    margin: 20px 0;
+  }
+
+  .page-links {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  p, a, input {
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+  }
+

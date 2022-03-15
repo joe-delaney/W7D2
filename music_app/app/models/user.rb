@@ -3,7 +3,7 @@ class User < ApplicationRecord
   validates :email, :session_token, uniqueness:true
   validates :password, length: {minimum: 6, allow_nil:true}
 
-  after_validation :ensure_session_token
+  before_validation :ensure_session_token
 
   def self.find_by_credentials(email, password)
     @user = User.find_by(email: email)
@@ -36,11 +36,6 @@ class User < ApplicationRecord
   def reset_session_token!
     self.session_token = SecureRandom.urlsafe_base64
     self.save!
-    self.session_tokeno
-  end
-
-  private 
-  def user_params 
-    params.require(:user).permit(:email, :password)
+    self.session_token
   end
 end

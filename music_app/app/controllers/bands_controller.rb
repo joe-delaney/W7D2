@@ -1,5 +1,7 @@
 class BandsController < ApplicationController
 
+  before_action :require_logged_in, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+
   def index 
     @bands = Band.all
     render :index

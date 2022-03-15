@@ -1,0 +1,51 @@
+<div class="main-content">
+  <h1 class="main-logo">Music App</h1>
+  <nav>
+    <a class="button" href="<%= bands_url%>">Take me Home</a>
+    <div class="user-detail">
+      <p><%="Logged in as: #{current_user.email}" %></p>
+      <form action="<%= session_url %>" method="post">
+        <input type="hidden" name="authenticity_token"value="<%= form_authenticity_token %>">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="Logout">
+      </form>
+    </div>
+  </nav>
+  <h2 class="page-header">Edit <%= @track.album.title %> Track!</h2>
+  <form class="form" action="<%= track_url(@track) %>" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="patch">
+    <p>
+      <label for="title">Track Title</label>
+      <input id="title" type="text" name="track[title]" value="<%=@track.title%>">
+    </p>
+    <p>
+      <label for="album">Album</label>
+        <select id="album" name="track[album_id]">
+          <option disabled selected>--Select Album--</option>
+          <% Album.all.each do |album| %>
+            <option value="<%= album.id %>" <%= @track.album_id == album.id ? "selected" : ""  %>><%= album.title %></option>
+          <% end %>
+        </select>
+    </p>
+    <p>
+      <label for="ord">Ord</label>
+      <input id="ord" type="number" name="track[ord]" value="<%=@track.ord%>" >
+    </p>
+    <p>
+      <label for="regular_true">Standard</label>
+      <input id="regular_true" type="radio" name="album[regular?]" value="true" <%= @track.regular? == "true" ? "checked" : ""  %>>
+      <label for="regular_false">Studio</label>
+      <input id="regular_false" type="radio" name="album[regular?]" value="false" <%= @track.regular? == "true" ? "" : "checked"  %>>
+    </p>
+    <p>
+      <label for="lyrics">Lyrics</label>
+      <textarea name="track[lyrics]" id="lyrics" value="<%=@track.lyrics%>" cols="40" rows="10"></textarea>
+    </p>
+    <input type="submit" value="Update Song">
+    <br>
+    <% if flash[:errors] %>
+      <%= flash[:errors] %>
+    <% end %>
+  </form>
+  </div>

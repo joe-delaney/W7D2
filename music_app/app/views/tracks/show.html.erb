@@ -11,40 +11,30 @@
       </form>
     </div>
   </nav>
-  <h2 class="page-header"><%= @album.title %></h2>
-  <h4 class = "sub-header">Tracks</h4>
-  <ul class= "main-list">
-    <% @album.tracks.each do |track| %>
-      <li>
-        <a href="<%= track_url(track) %>">
-          <p><%= track.title %></p>
-        </a>
-      </li>
-    <% end %>
-  </ul>
+  <h2 class="page-header"><%= @track.title %></h2>
+  <% if @track.lyrics.length > 0 %>
+    <h4 class = "sub-header">Lyrics</h4>
+    <p class="lyrics"><%= @track.lyrics %></p>
+  <% end %>
+
   <h4 class="sub-header">Links</h4>
   <ul class="page-links">
     <li>
-        <a class= "button" href="<%= new_album_track_url(@album.id) %>">
-          <p>New track</p>
+        <a class= "button" href="<%= edit_track_url %>">
+          <p>Edit Track</p>
         </a>
     </li>
     <li>
-        <a class= "button" href="<%= edit_album_url %>">
-          <p>Edit Album</p>
-        </a>
-    </li>
-    <li>
-        <form action="<%= album_url(@album) %>" method="POST">
+        <form action="<%= track_url(@track) %>" method="POST">
           <input type="hidden" name="_method" value="delete">
           <input type="hidden" name="authenticity_token"value="<%= form_authenticity_token %>">
-          <input type="submit" value="Destroy Album">
+          <input type="submit" value="Destroy Track">
         </form>
     </li>
     <li>
-        <a class= "button" href="<%= band_url(@album.band) %>">
-          <p>Back to <%= @album.band.name %></p>
+        <a class= "button" href="<%= album_url(@track.album) %>">
+          <p>Back to <%= @track.album.title %></p>
         </a>
     </li>
   </ul>
-</div>
+  </div>

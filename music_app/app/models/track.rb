@@ -1,5 +1,5 @@
 class Track < ApplicationRecord
-  validates :album_id, :title, :ord, :lyrics, :regular?, presence:true 
+  validates :album_id, :title, :ord, :regular?, presence:true 
   validates :regular?, inclusion: %w(true false)
 
   belongs_to :album,

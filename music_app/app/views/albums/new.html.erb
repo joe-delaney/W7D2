@@ -1,0 +1,46 @@
+<div class="main-content">
+  <h1 class="main-logo">Music App</h1>
+  <nav>
+    <a class="button" href="<%= bands_url%>">Take me Home</a>
+    <div class="user-detail">
+      <p><%="Logged in as: #{current_user.email}" %></p>
+      <form action="<%= session_url %>" method="post">
+        <input type="hidden" name="authenticity_token"value="<%= form_authenticity_token %>">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="Logout">
+      </form>
+    </div>
+  </nav>
+  <h2 class="page-header">New <%= @band.name %> Album!</h2>
+  <form class="form" action="<%= albums_url %>" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <p>
+      <label for="title">Album Title</label>
+      <input id="title" type="text" name="album[title]">
+    </p>
+    <p>
+      <label for="band">Band</label>
+        <select id="band" name="album[band_id]">
+          <option disabled selected>--Select Band--</option>
+          <% Band.all.each do |band| %>
+            <option value="<%= band.id %>"><%= band.name %></option>
+          <% end %>
+        </select>
+    </p>
+    <p>
+      <label for="album_live_true">Live</label>
+      <input id="album_live" type="radio" name="album[live?]" value="true" checked>
+      <label for="album_live_false">Studio</label>
+      <input id="album_live" type="radio" name="album[live?]" value="false">
+    </p>
+    <p>
+      <label for="year">Year</label>
+      <input id="year" type="text" name="album[year]">
+    </p>
+    <input type="submit" value="Create Album">
+    <br>
+    <% if flash[:errors] %>
+      <%= flash[:errors] %>
+    <% end %>
+  </form>
+  </div>

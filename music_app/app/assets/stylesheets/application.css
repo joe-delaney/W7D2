@@ -66,6 +66,12 @@ html, body, div, span, h1, h2, h3, h4, a, p, ol, ul, li, form, label, article, a
     cursor: pointer;
   }
 
+  input[type="submit"]:hover {
+    background-color: dodgerblue;
+    cursor: pointer;
+  }
+  
+
   .button { 
     display: block;
     padding: 10px;

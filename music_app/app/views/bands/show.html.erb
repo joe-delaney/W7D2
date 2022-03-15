@@ -13,9 +13,22 @@
   </nav>
   <h2 class="page-header"><%= @band.name %></h2>
   <h4 class = "sub-header">Albums</h4>
-  <p>INSERT ALBUMS CODE HERE</p>
+  <ul class= "main-list">
+    <% @band.albums.each do |album| %>
+      <li>
+        <a href="<%= album_url(album) %>">
+          <p><%= album.title %></p>
+        </a>
+      </li>
+    <% end %>
+  </ul>
   <h4 class="sub-header">Links</h4>
   <ul class="page-links">
+    <li>
+        <a class= "button" href="<%= new_band_album_url(@band.id) %>">
+          <p>New album</p>
+        </a>
+    </li>
     <li>
         <a class= "button" href="<%= edit_band_url %>">
           <p>Edit Band</p>

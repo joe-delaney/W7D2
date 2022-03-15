@@ -11,9 +11,10 @@
       </form>
     </div>
   </nav>
-  <h2 class="page-header">New Band</h2>
-  <form class="form" action="<%= bands_url %>" method="POST">
+  <h2 class="page-header">Edit Band</h2>
+  <form class="form" action=<%=band_url(@band)%>" method="POST">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="patch">
     <p>
       <label for="name">Band Name</label>
       <input id="name" type="text" name="band[name]">

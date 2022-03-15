@@ -1,0 +1,37 @@
+<div class="main-content">
+  <h1 class="main-logo">Music App</h1>
+  <nav>
+    <a class="button" href="<%= bands_url%>">Take me Home</a>
+    <div class="user-detail">
+      <p><%="Logged in as: #{current_user.email}" %></p>
+      <form action="<%= session_url %>" method="post">
+        <input type="hidden" name="authenticity_token"value="<%= form_authenticity_token %>">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="Logout">
+      </form>
+    </div>
+  </nav>
+  <h2 class="page-header"><%= @band.name %></h2>
+  <h4 class = "sub-header">Albums</h4>
+  <p>INSERT ALBUMS CODE HERE</p>
+  <h4 class="sub-header">Links</h4>
+  <ul class="page-links">
+    <li>
+        <a class= "button" href="<%= edit_band_url %>">
+          <p>Edit Band</p>
+        </a>
+    </li>
+    <li>
+        <form action="<%= band_url(@band) %>" method="POST">
+          <input type="hidden" name="_method" value="delete">
+          <input type="hidden" name="authenticity_token"value="<%= form_authenticity_token %>">
+          <input type="submit" value="Destroy Band">
+        </form>
+    </li>
+    <li>
+        <a class= "button" href="<%= bands_url %>">
+          <p>All bands</p>
+        </a>
+    </li>
+  </ul>
+</div>
